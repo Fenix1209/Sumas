@@ -1,8 +1,15 @@
 const express = require('express');
 const app = express();
+const morgan = require ('morgan');
+const cors =require('cors');
 const port = 3000;
+
 // Middleware para procesar JSON
 app.use(express.json());
+app .use(morgan('dev'));
+app .use (expreess.unlencoded({extended:false}));
+app .use (expreess.json());
+app .use (cors());
 
 // Configuración del puerto y formato JSON
 app.set('port', process.env.PORT || 3000);
